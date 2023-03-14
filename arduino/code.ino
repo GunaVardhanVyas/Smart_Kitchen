@@ -3,7 +3,8 @@
 #define RX 10
 #define TX 11
 #define dht_apin 9 
-#define smokes 0
+#define smokes A0
+#define gas A1
 
 DHT11 DHT;
 String AP = "Acess_Point";       // AP NAME
@@ -15,6 +16,7 @@ int countTrueCommand;
 int countTimeCommand; 
 boolean found = false; 
 float smokeSens;
+float gasSens;
   
 SoftwareSerial esp8266(RX,TX); 
   
