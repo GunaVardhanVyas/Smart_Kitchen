@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Smart Kitchen Graph</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://www.mathworks.com/tmw/thingspeakanalytics/thingspeakvisualizations.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<nav><h2>Smart Kitchen</h2></nav>
+	
+	
+		<div class="row">
+			
+			
+			<div class="col-6">
+				<h3><center>Field 1 Data</center></h3>
+				<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2058684/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+			</div>
+		
+		<div class="col-6">
+			<h3><center>Field 2 Data</center></h3>
+				<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2058684/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+		
+		</div>
+
+	</div>
+	
+
+	<div class="row">
+			
+			
+		<div class="col-6">
+			<h3><center>Field 3 Data</center></h3>
+			<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2058684/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+		</div>
+	
+	<div class="col-6">
+		<h3><center>Field 4 Data</center></h3>
+			<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2058684/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+	
+	</div>
+
+</div>
+
+	<script>
+		$(document).ready(function() {
+			// Set your ThingSpeak Channel ID and API Key
+			var channelID = "2058684";
+			var apiKey = "KAP1UJ84VJ6ITTIT";
+			var fieldNumber1 = 1; // Set the first field number you want to display
+			var fieldNumber2 = 2; // Set the second field number you want to display
+			var fieldNumber2 = 3; // Set the second field number you want to display
+			var fieldNumber2 = 4; // Set the second field number you want to display
+
+			// Get the data from ThingSpeak for field 1
+			$.getJSON("https://api.thingspeak.com/channels/" + channelID + "/fields/" + fieldNumber1 + ".json?api_key=" + apiKey + "&results=50", function(data) {
+				// Create a time-series plot for field 1
+				thingSpeakPlot("graph1", data.feeds, {title: "ThingSpeak Graph"});
+			});
+
+			// Get the data from ThingSpeak for field 2
+			$.getJSON("https://api.thingspeak.com/channels/" + channelID + "/fields/" + fieldNumber2 + ".json?api_key=" + apiKey + "&results=50", function(data) {
+				// Create a time-series plot for field 2
+				thingSpeakPlot("graph2", data.feeds, {title: "ThingSpeak Graph"});
+			});
+
+			// Get the data from ThingSpeak for field 3
+			$.getJSON("https://api.thingspeak.com/channels/" + channelID + "/fields/" + fieldNumber3 + ".json?api_key=" + apiKey + "&results=50", function(data) {
+				// Create a time-series plot for field 3
+				thingSpeakPlot("graph3", data.feeds, {title: "ThingSpeak Graph"});
+			});
+
+			// Get the data from ThingSpeak for field 4
+			$.getJSON("https://api.thingspeak.com/channels/" + channelID + "/fields/" + fieldNumber4 + ".json?api_key=" + apiKey + "&results=50", function(data) {
+				// Create a time-series plot for field 2
+				thingSpeakPlot("graph4", data.feeds, {title: "ThingSpeak Graph"});
+			});
+		});
+	</script>
+</body>
+</html>
