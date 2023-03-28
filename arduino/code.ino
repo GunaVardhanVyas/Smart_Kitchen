@@ -38,7 +38,7 @@ void loop() {
  sendCommand("AT+CIPSTART=0,\"TCP\",\""+ HOST +"\","+ PORT,15,"OK");
  sendCommand("AT+CIPSEND=0," +String(getData.length()+4),4,">");
  esp8266.println(getData);
- delay(1500);
+ delay(1000);
  countTrueCommand++;
  sendCommand("AT+CIPCLOSE=0",5,"OK");
 }
@@ -69,7 +69,7 @@ String getSmokeVal(){
   smokeSens = analogRead(smokes);
   Serial.print(" Concentration of smoke(in ppm)");
   Serial.println(smokeSens);
-  delay(100);
+  delay(50);
   return String(smokeSens);
 }
 
@@ -77,7 +77,7 @@ String getGasVal(){
   gasSens = analogRead(gas);
   Serial.print(" Concentration of smoke(in ppm)");
   Serial.println(gasSens);
-  delay(100);
+  delay(50);
   return String(gasSens);
 }
 
